@@ -1,17 +1,17 @@
-// src/pages/GestionProductos.tsx
+
 
 import React, { useState, useEffect } from 'react';
 
-// --- Definición de Tipos ---
+
 interface Producto {
-  id?: string; // El ID es opcional al crear
+  id?: string; 
   codigo: string;
   nombre: string;
   cantidad: number;
   precio: number;
   stock: number;
   proveedor: string;
-  fechaEntrada?: string; // La fecha la genera el backend
+  fechaEntrada?: string;
 }
 
 const initialState: Producto = {
@@ -24,13 +24,13 @@ const initialState: Producto = {
 };
 
 const GestionProductos: React.FC = () => {
-  // --- Estados del Componente ---
+ 
   const [productos, setProductos] = useState<Producto[]>([]);
   const [newProducto, setNewProducto] = useState<Producto>(initialState);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  // --- useEffect para Cargar la Lista de Productos ---
+  
   useEffect(() => {
     const fetchProductos = async () => {
       try {
@@ -47,9 +47,9 @@ const GestionProductos: React.FC = () => {
       }
     };
     fetchProductos();
-  }, []); // Se ejecuta solo al montar el componente
+  }, []); 
 
-  // --- Manejadores de Eventos del Formulario ---
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setNewProducto(prevState => ({
@@ -73,7 +73,7 @@ const GestionProductos: React.FC = () => {
 
       const productoGuardado: Producto = await response.json();
       
-      // Actualizamos la lista de productos y reiniciamos el formulario
+     
       setProductos(prevProductos => [...prevProductos, productoGuardado]);
       setNewProducto(initialState);
       alert('Producto registrado con éxito!');
@@ -82,12 +82,12 @@ const GestionProductos: React.FC = () => {
     }
   };
 
-  // --- Renderizado ---
+
   return (
     <div className="p-8">
       <h1 className="text-3xl font-bold text-gray-800">Gestión de Inventario</h1>
       
-      {/* Formulario para Registrar Productos */}
+    
       <div className="mt-6 rounded-lg bg-white p-6 shadow-md">
         <h2 className="text-xl font-semibold">Registrar Entrada de Producto</h2>
         <form onSubmit={handleSubmit} className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -101,7 +101,7 @@ const GestionProductos: React.FC = () => {
         </form>
       </div>
 
-      {/* Tabla de Productos Existentes */}
+      
       <div className="mt-8 overflow-x-auto rounded-lg bg-white shadow-md">
         <h2 className="p-6 text-xl font-semibold">Listado de Productos</h2>
         {isLoading ? <p className="p-6">Cargando productos...</p> : error ? <p className="p-6 text-red-500">{error}</p> : (

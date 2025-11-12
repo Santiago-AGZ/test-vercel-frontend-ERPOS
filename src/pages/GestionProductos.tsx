@@ -82,12 +82,12 @@ const GestionProductos: React.FC = () => {
     }
   };
 
-  // --- Renderizado ---
+  
   return (
     <div className="p-8">
       <h1 className="text-3xl font-bold text-gray-800">Gestión de Inventario</h1>
       
-      {/* Formulario para Registrar Productos */}
+      
       <div className="mt-6 rounded-lg bg-white p-6 shadow-md">
         <h2 className="text-xl font-semibold">Registrar Entrada de Producto</h2>
         <form onSubmit={handleSubmit} className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -101,31 +101,39 @@ const GestionProductos: React.FC = () => {
         </form>
       </div>
 
-      {/* Tabla de Productos Existentes */}
+      
       <div className="mt-8 overflow-x-auto rounded-lg bg-white shadow-md">
         <h2 className="p-6 text-xl font-semibold">Listado de Productos</h2>
-        {isLoading ? <p className="p-6">Cargando productos...</p> : error ? <p className="p-6 text-red-500">{error}</p> : (
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Código</th>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Nombre</th>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Stock</th>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Precio</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-200 bg-white">
-              {productos.map(producto => (
-                <tr key={producto.id || producto.codigo}>
-                  <td className="whitespace-nowrap px-6 py-4">{producto.codigo}</td>
-                  <td className="whitespace-nowrap px-6 py-4">{producto.nombre}</td>
-                  <td className="whitespace-nowrap px-6 py-4">{producto.stock}</td>
-                  <td className="whitespace-nowrap px-6 py-4">${producto.precio.toFixed(2)}</td>
+        {(() => {
+          if (isLoading) {
+            return <p className="p-6">Cargando productos...</p>;
+          }
+          if (error) {
+            return <p className="p-6 text-red-500">{error}</p>;
+          }
+          return (
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Código</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Nombre</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Stock</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Precio</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+              </thead>
+              <tbody className="divide-y divide-gray-200 bg-white">
+                {productos.map(producto => (
+                  <tr key={producto.id || producto.codigo}>
+                    <td className="whitespace-nowrap px-6 py-4">{producto.codigo}</td>
+                    <td className="whitespace-nowrap px-6 py-4">{producto.nombre}</td>
+                    <td className="whitespace-nowrap px-6 py-4">{producto.stock}</td>
+                    <td className="whitespace-nowrap px-6 py-4">${producto.precio.toFixed(2)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          );
+        })()}
       </div>
     </div>
   );
