@@ -1,4 +1,3 @@
-// services/movimientoService.ts - VERIFICAR
 import api from './api';
 import type {
     MovimientoInventarioRequestDTO,

@@ -1,4 +1,3 @@
-// components/MovimientoInventario.tsx - CORREGIDO
 import React, { useState, useEffect } from 'react';
 import { movimientoService } from '../services/movimientoService';
 import { productoService } from '../services/productoService';

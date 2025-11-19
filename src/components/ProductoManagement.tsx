@@ -1,4 +1,3 @@
-// components/ProductoManagement.tsx
 import React, { useState, useEffect } from 'react';
 import { productoService } from '../services/productoService';
 import type { ProductoRequestDTO, ProductoResponseDTO } from '../types/producto';
