@@ -5,8 +5,8 @@ interface PermissionGuardProps {
     children: React.ReactNode;
     requiredPermission?: keyof ReturnType<typeof useAuth>['permissions'];
     requiredRole?: 'isSuperAdmin' | 'isAdministrador' | 'isGerente' | 'isAlmacenista' | 'isContador' | 'isVendedor' | 'isAuditor';
-    requireAll?: boolean; // Si true, requiere TODOS los permisos/roles. Si false, requiere AL MENOS uno
-    fallback?: React.ReactNode; // Componente a mostrar si no tiene permisos
+    requireAll?: boolean; 
+    fallback?: React.ReactNode;
 }
 
 export const PermissionGuard: React.FC<PermissionGuardProps> = ({

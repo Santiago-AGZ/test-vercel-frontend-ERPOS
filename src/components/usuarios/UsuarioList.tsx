@@ -1,12 +1,11 @@
-// UsuarioList.tsx - CORREGIDO
 import React from 'react';
-import type { Usuario } from '../../types'; // Cambiar importación
+import type { Usuario } from '../../types'; 
 
 interface UsuarioListProps {
     usuarios: Usuario[];
     onEdit: (usuario: Usuario) => void;
     onToggleStatus: (usuario: Usuario) => void;
-    onEditRoles: (usuario: Usuario, roles: string[]) => void; // Cambiar firma
+    onEditRoles: (usuario: Usuario, roles: string[]) => void; 
 }
 
 export const UsuarioList: React.FC<UsuarioListProps> = ({

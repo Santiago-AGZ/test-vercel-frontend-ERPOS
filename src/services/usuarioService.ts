@@ -1,4 +1,3 @@
-// usuarioService.ts - CORREGIDO
 import api from './api';
 import type {
     Usuario,

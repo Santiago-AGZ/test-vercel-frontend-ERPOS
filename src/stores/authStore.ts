@@ -1,4 +1,3 @@
-// authStore.ts - AGREGAR efecto de verificación inicial
 import { create } from 'zustand';
 import type { User, LoginRequest } from '../types';
 import { transformBackendUser } from '../types/transformBackendUser';
@@ -22,7 +21,7 @@ interface AuthActions {
   hasAnyRole: (roles: string[]) => boolean;
   hasAllRoles: (roles: string[]) => boolean;
   getUserPermissions: () => any;
-  initializeAuth: () => void; // Nueva acción para inicializar
+  initializeAuth: () => void; 
 }
 
 export const useAuthStore = create<AuthState & AuthActions>((set, get) => ({
@@ -30,7 +29,7 @@ export const useAuthStore = create<AuthState & AuthActions>((set, get) => ({
   user: null,
   token: null,
   isAuthenticated: false,
-  isLoading: true, // Iniciar como true para verificar autenticación
+  isLoading: true, 
   error: null,
   initialized: false,
 

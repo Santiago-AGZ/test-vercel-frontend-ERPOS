@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { CambiarPasswordRequestDTO } from '../../types/usuario/usuario';
+import type { CambiarPasswordRequestDTO } from '../../types/index';
 
 interface CambiarPasswordProps {
     onSubmit: (data: CambiarPasswordRequestDTO) => void;

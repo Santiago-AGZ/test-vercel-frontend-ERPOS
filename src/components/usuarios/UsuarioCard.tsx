@@ -1,5 +1,5 @@
 import React from 'react';
-import type { UsuarioResponseDTO } from '../../types/usuario/usuario';
+import type { UsuarioResponseDTO } from '../../types/index';
 
 interface UsuarioCardProps {
     usuario: UsuarioResponseDTO;
